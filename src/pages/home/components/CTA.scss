@@ -1,0 +1,97 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.cta {
+  padding: 32px 0;
+  background-color: $background;
+
+  &__card {
+    background-color: $primary-container;
+    border-radius: $radius-xl;
+    padding: 48px;
+    text-align: center;
+    color: $on-primary;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+    @include mobile {
+      padding: 32px 16px;
+    }
+  }
+
+  &__bg-shapes {
+    position: absolute;
+    inset: 0;
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  &__shape {
+    position: absolute;
+    border-radius: $radius-full;
+    filter: blur(64px);
+    -webkit-filter: blur(64px);
+
+    &--top-right {
+      top: -64px;
+      right: -64px;
+      width: 256px;
+      height: 256px;
+      background-color: $secondary-container;
+    }
+
+    &--bottom-left {
+      bottom: -64px;
+      left: -64px;
+      width: 256px;
+      height: 256px;
+      background-color: $secondary;
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 10;
+    max-width: 672px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: $stack-md;
+  }
+
+  &__title {
+    @include font-headline-lg;
+    color: $on-primary;
+  }
+
+  &__description {
+    @include font-body-md;
+    color: rgba($on-primary, 0.85);
+    line-height: 1.6;
+  }
+
+  &__action-wrapper {
+    padding-top: 16px;
+  }
+
+  &__btn {
+    background-color: $secondary;
+    color: $on-secondary;
+    padding: 12px 40px;
+    border-radius: $radius-lg;
+    @include font-label-md;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      opacity: 0.9;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}

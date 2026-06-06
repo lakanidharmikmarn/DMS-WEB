@@ -1,0 +1,179 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.services {
+  padding: 64px 0;
+  background-color: $surface;
+
+  &__header {
+    text-align: center;
+    margin-bottom: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: $stack-sm;
+  }
+
+  &__title {
+    @include font-headline-lg;
+    color: $primary;
+  }
+
+  &__subtitle {
+    @include font-body-md;
+    color: $on-surface-variant;
+    max-width: 576px;
+    margin: 0 auto;
+  }
+
+  &__card {
+    padding: $stack-lg;
+    border-radius: $radius-xl;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    &-content {
+      text-align: left;
+    }
+
+    &-icon {
+      font-size: 40px;
+      color: $secondary;
+      margin-bottom: 16px;
+    }
+
+    &-title {
+      @include font-headline-md;
+      color: $primary;
+      margin-bottom: 8px;
+    }
+
+    &-description {
+      @include font-body-sm;
+      color: $on-surface-variant;
+    }
+
+    &-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 16px;
+      @include font-label-md;
+      color: $secondary;
+      align-self: flex-start;
+
+      span {
+        font-size: 16px;
+        transition: transform 0.2s ease;
+      }
+
+      &:hover span {
+        transform: translateX(4px);
+      }
+    }
+
+    // Specific variants for the bento layout grid spans
+    &--general {
+      grid-column: span 4;
+      background-color: $surface-container-lowest;
+      border: 1px solid rgba($outline-variant, 0.3);
+
+      @include md {
+        grid-column: span 2;
+      }
+    }
+
+    &--cosmetic {
+      grid-column: span 4;
+      background-color: $primary-container;
+      color: $on-primary-fixed;
+
+      @include md {
+        grid-column: span 1;
+      }
+
+      .services__card-icon {
+        color: $secondary-fixed-dim;
+      }
+
+      .services__card-title {
+        color: $on-primary;
+      }
+
+      .services__card-description {
+        color: $on-primary-container;
+      }
+
+      .services__card-link {
+        color: $secondary-fixed-dim;
+      }
+    }
+
+    &--ortho {
+      grid-column: span 4;
+      background-color: $surface-container-highest;
+      border: 1px solid rgba($outline-variant, 0.3);
+
+      @include md {
+        grid-column: span 1;
+      }
+    }
+
+    &--featured {
+      grid-column: span 4;
+      background-color: $secondary;
+      color: $on-secondary;
+      flex-direction: row;
+      align-items: center;
+      gap: $gutter;
+      position: relative;
+      overflow: hidden;
+
+      @include mobile {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  }
+
+  &__featured-content {
+    flex: 1;
+    text-align: left;
+    z-index: 10;
+  }
+
+  &__featured-title {
+    @include font-headline-lg;
+    color: $on-secondary;
+    margin-bottom: 8px;
+  }
+
+  &__featured-description {
+    @include font-body-md;
+    color: rgba($on-secondary, 0.9);
+    max-width: 512px;
+  }
+
+  &__featured-image-wrapper {
+    display: none;
+    width: 33.333%;
+    height: 192px;
+
+    @include md {
+      display: block;
+    }
+  }
+
+  &__featured-img {
+    border-radius: $radius-lg;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}

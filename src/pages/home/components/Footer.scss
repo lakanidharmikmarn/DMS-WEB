@@ -1,0 +1,178 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.footer {
+  width: 100%;
+  background-color: $primary-container;
+  color: $on-primary-container;
+  padding: 64px 0 32px 0;
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+
+    @include md {
+      grid-template-columns: repeat(4, 1fr);
+      gap: $gutter;
+    }
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: left;
+
+    &--info {
+      gap: $stack-md;
+    }
+  }
+
+  &__logo {
+    @include font-headline-md;
+    color: $on-primary;
+    font-weight: 700;
+  }
+
+  &__description {
+    @include font-body-sm;
+    opacity: 0.8;
+    line-height: 1.6;
+  }
+
+  &__socials {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__social-icon {
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $on-primary;
+    }
+  }
+
+  &__title {
+    @include font-label-md;
+    color: $on-primary;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0;
+  }
+
+  &__item {
+    @include font-body-sm;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__item-icon {
+    font-size: 16px;
+  }
+
+  &__link {
+    color: inherit;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $on-primary;
+      text-decoration: underline;
+    }
+  }
+
+  &__newsletter-desc {
+    @include font-body-sm;
+    opacity: 0.8;
+  }
+
+  &__newsletter-form {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+  }
+
+  &__newsletter-input {
+    flex: 1;
+    background-color: rgba($on-primary, 0.1);
+    border: 1px solid rgba($on-primary, 0.2);
+    color: $on-primary;
+    padding: 8px 16px;
+    border-radius: $radius-lg;
+    @include font-body-sm;
+    transition: all 0.2s ease;
+
+    &:focus {
+      border-color: $secondary;
+      background-color: rgba($on-primary, 0.15);
+    }
+  }
+
+  &__newsletter-btn {
+    background-color: $secondary;
+    color: $on-secondary;
+    padding: 8px 12px;
+    border-radius: $radius-lg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      font-size: 20px;
+    }
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &__bottom {
+    grid-column: 1 / -1;
+    border-top: 1px solid rgba($on-primary, 0.1);
+    padding-top: 32px;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    @include font-body-sm;
+    opacity: 0.6;
+
+    @include md {
+      flex-direction: row;
+    }
+  }
+
+  &__copyright {
+    margin: 0;
+  }
+
+  &__payments {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__payment-img {
+    height: 24px;
+    opacity: 0.5;
+    filter: grayscale(100%);
+    transition: all 0.2s ease;
+
+    &:hover {
+      opacity: 1;
+      filter: grayscale(0%);
+    }
+  }
+}

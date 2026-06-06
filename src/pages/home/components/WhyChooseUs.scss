@@ -1,0 +1,139 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.why-us {
+  padding: 64px 0;
+  background-color: $surface-container-low;
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: center;
+
+    @include md {
+      grid-template-columns: 1fr 1fr;
+      gap: $margin-desktop;
+    }
+  }
+
+  &__content {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: $stack-lg;
+  }
+
+  &__title {
+    @include font-headline-lg;
+    color: $primary;
+  }
+
+  &__features {
+    display: flex;
+    flex-direction: column;
+    gap: $gutter;
+  }
+
+  &__feature {
+    display: flex;
+    gap: $gutter;
+    align-items: start;
+
+    @include mobile {
+      gap: 16px;
+    }
+  }
+
+  &__feature-icon-wrapper {
+    background-color: $secondary-fixed;
+    padding: 12px;
+    border-radius: $radius-full;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__feature-icon {
+    font-size: 24px;
+    color: $on-secondary-fixed;
+  }
+
+  &__feature-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__feature-title {
+    @include font-headline-md;
+    font-size: 20px;
+    color: $primary;
+  }
+
+  &__feature-desc {
+    @include font-body-sm;
+    color: $on-surface-variant;
+  }
+
+  &__media {
+    position: relative;
+    width: 100%;
+
+    @include mobile {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    border-radius: $radius-xl;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    object-fit: cover;
+  }
+
+  &__badge {
+    position: absolute;
+    bottom: -32px;
+    left: -32px;
+    padding: $stack-lg;
+    border-radius: $radius-xl;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    max-width: 200px;
+    display: none;
+
+    @include lg {
+      display: block;
+    }
+  }
+
+  &__rating-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  &__rating-num {
+    @include font-headline-lg;
+    color: $secondary;
+  }
+
+  &__stars {
+    display: flex;
+    color: $secondary-container;
+  }
+
+  &__star {
+    font-size: 16px;
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+
+  &__badge-label {
+    @include font-body-sm;
+    font-weight: 700;
+    color: $primary;
+    text-align: left;
+  }
+}

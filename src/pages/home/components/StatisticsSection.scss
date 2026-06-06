@@ -1,0 +1,213 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.statistics-section {
+  padding: 80px $margin-desktop;
+  background: linear-gradient(135deg, rgba($primary, 0.02) 0%, rgba($secondary, 0.02) 100%);
+  border-top: 1px solid rgba($outline-variant, 0.1);
+  border-bottom: 1px solid rgba($outline-variant, 0.1);
+
+  @include mobile {
+    padding: 60px $margin-mobile;
+  }
+
+  @include tablet {
+    padding: 70px 32px;
+  }
+}
+
+.statistics-container {
+  max-width: $container-max;
+  margin: 0 auto;
+}
+
+.statistics-title {
+  @include font-headline-lg;
+  text-align: center;
+  color: $on-surface;
+  margin: 0 0 12px 0;
+}
+
+.statistics-subtitle {
+  @include font-body-md;
+  text-align: center;
+  color: $on-surface-variant;
+  margin: 0 0 48px 0;
+
+  @include mobile {
+    margin-bottom: 32px;
+  }
+}
+
+.statistics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  width: 100%;
+
+  @include lg {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.statistics-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 32px 24px;
+  background-color: $surface-container;
+  border-radius: $radius-lg;
+  border: 1px solid rgba($outline-variant, 0.15);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  min-height: 280px;
+
+  @include mobile {
+    min-height: 240px;
+    padding: 24px 16px;
+  }
+
+  // Background gradient on hover
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba($secondary, 0.05) 0%, rgba($secondary, 0.02) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+
+  &:hover {
+    transform: translateY(-8px);
+    border-color: rgba($secondary, 0.3);
+    box-shadow: 0 12px 32px rgba($secondary, 0.15);
+    background-color: rgba($surface-container, 0.8);
+
+    &::before {
+      opacity: 1;
+    }
+
+    .statistics-card__icon {
+      color: $secondary;
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .statistics-card__number {
+      color: $secondary;
+    }
+  }
+
+  &:active {
+    transform: translateY(-4px);
+  }
+}
+
+.statistics-card__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  z-index: 1;
+}
+
+.statistics-card__number {
+  @include font-display-lg;
+  color: $primary;
+  font-weight: 700;
+  line-height: 1.2;
+  transition: color 0.3s ease;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px;
+}
+
+.statistics-card__suffix {
+  font-size: 0.6em;
+  font-weight: 600;
+  color: $secondary;
+  margin-left: 4px;
+}
+
+.statistics-card__label {
+  @include font-headline-md;
+  color: $on-surface;
+  margin: 0;
+  font-weight: 600;
+}
+
+.statistics-card__description {
+  @include font-body-sm;
+  color: $on-surface-variant;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.statistics-card__icon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba($secondary, 0.1);
+  border-radius: 50%;
+  color: rgba($secondary, 0.6);
+  transition: all 0.3s ease;
+  z-index: 2;
+
+  span.material-symbols-outlined {
+    font-size: 24px;
+    font-weight: 500;
+  }
+}
+
+// Accessibility - Focus states
+.statistics-card:focus-within {
+  outline: 2px solid $secondary;
+  outline-offset: 2px;
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .statistics-card {
+    transition: none;
+
+    &::before {
+      transition: none;
+    }
+
+    .statistics-card__icon {
+      transition: none;
+    }
+
+    .statistics-card__number {
+      transition: none;
+    }
+
+    &:hover {
+      transform: none;
+    }
+  }
+}
