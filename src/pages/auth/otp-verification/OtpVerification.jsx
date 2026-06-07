@@ -139,6 +139,7 @@ const OtpVerification = () => {
       showBackButton={false}
       layoutType="centered-card"
       carouselActiveIndex={1}
+      showFooterLinks={false}
     >
       <Toast ref={toast} position="top-right" />
 

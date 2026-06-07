@@ -10,7 +10,8 @@ const AuthLayout = ({
   backToUrl = '/',
   layoutType = 'centered-card', // 'split-full-image' | 'split-framed-image' | 'centered-card'
   floatingImage = false,
-  carouselActiveIndex = null // null | 0 | 1
+  carouselActiveIndex = null, // null | 0 | 1
+  showFooterLinks = true
 }) => {
   const navigate = useNavigate();
 
@@ -93,7 +94,7 @@ const AuthLayout = ({
         {/* Right Side Form Panel */}
         <div className={`auth-form-panel ${!isSplit ? 'auth-form-panel--centered' : ''}`}>
           <div className="auth-form-wrapper">
-            <div className={`auth-card ${!isSplit ? 'auth-card--shadowed' : ''}`}>
+            <div className={`auth-card ${!isSplit ? 'auth-card--shadowed' : ''} ${floatingImage ? 'auth-card--with-preview' : ''}`}>
               {/* Floating side image for NewPassword reset view */}
               {floatingImage && (
                 <div className="auth-floating-preview">
@@ -116,23 +117,25 @@ const AuthLayout = ({
               )}
 
               {children}
-
-              {/* Carousel Dot indicators under the card (Forgot Password / OTP) */}
-              {carouselActiveIndex !== null && (
-                <div className="auth-carousel-dots">
-                  <span className={`dot ${carouselActiveIndex === 0 ? 'dot--active' : ''}`}></span>
-                  <span className={`dot ${carouselActiveIndex === 1 ? 'dot--active' : ''}`}></span>
-                </div>
-              )}
             </div>
+
+            {/* Step indicators below card (Forgot Password / OTP flow) */}
+            {carouselActiveIndex !== null && (
+              <div className="auth-carousel-dots" aria-hidden="true">
+                <span className={`dot ${carouselActiveIndex === 0 ? 'dot--active' : ''}`}></span>
+                <span className={`dot ${carouselActiveIndex === 1 ? 'dot--active' : ''}`}></span>
+              </div>
+            )}
           </div>
 
           {/* Privacy Policy, Terms of Service, Support Links */}
+          {showFooterLinks && (
           <footer className="auth-footer-links">
             <Link to="#" className="auth-footer-links__link">Privacy Policy</Link>
             <Link to="#" className="auth-footer-links__link">Terms of Service</Link>
             <Link to="#" className="auth-footer-links__link">Support</Link>
           </footer>
+          )}
         </div>
       </div>
     </div>

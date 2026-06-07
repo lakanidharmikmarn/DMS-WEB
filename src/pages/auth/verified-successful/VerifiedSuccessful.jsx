@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'primereact/button';
 import AuthLayout from '../AuthLayout';
+import LottieAnimation from '../../../components/lottie/LottieAnimation';
 import './VerifiedSuccessful.scss';
 
 const VerifiedSuccessful = () => {
@@ -11,15 +12,20 @@ const VerifiedSuccessful = () => {
     <AuthLayout
       showBackButton={false}
       layoutType="centered-card"
+      showFooterLinks={false}
     >
-      <div className="auth-success-state">
-        <div className="auth-success-state__icon-container">
-          <i className="pi pi-check"></i>
+      <div className="verified-success">
+        <div className="verified-success__lottie-wrap">
+          <LottieAnimation
+            name="verified-success"
+            loop={false}
+            className="verified-success__lottie"
+          />
         </div>
 
-        <h2 className="auth-success-state__title">Password Reset Successful!</h2>
-        
-        <p className="auth-success-state__description">
+        <h1 className="verified-success__title">Password Reset Successful!</h1>
+
+        <p className="verified-success__description">
           Your password has been updated successfully. You can now sign in with your new credentials.
         </p>
 
@@ -29,8 +35,7 @@ const VerifiedSuccessful = () => {
           icon="pi pi-arrow-right"
           iconPos="right"
           onClick={() => navigate('/login')}
-          className="auth-btn-teal"
-          style={{ width: '100%', maxWidth: '300px' }}
+          className="auth-btn-teal verified-success__button"
         />
       </div>
     </AuthLayout>

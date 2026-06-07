@@ -173,18 +173,40 @@
   -webkit-overflow-scrolling: touch;
 
   &--centered {
-    background-color: #f8fafc;
+    background: radial-gradient(ellipse 120% 80% at 50% 0%, #e3f2fc 0%, #f0f7fb 40%, #f8fafc 100%);
     align-items: center;
     width: 100%;
-    gap: 24px;
-    padding: 40px 8px;
+    gap: 0;
+    padding: 40px 16px;
 
     @include tablet {
-      padding: 40px 16px;
+      padding: 40px 24px;
     }
 
     @media (min-width: 1024px) {
-      padding: 40px 24px;
+      padding: 48px 24px;
+    }
+
+    .auth-form-wrapper {
+      gap: 20px;
+    }
+
+    .auth-card--shadowed {
+      max-width: 440px;
+      padding: 40px 32px 32px;
+      border-radius: 16px;
+      box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.04),
+        0 12px 32px -4px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(#e2e8f0, 0.7);
+    }
+
+    .auth-card--with-preview {
+      overflow: visible;
+
+      @include lg {
+        max-width: 460px;
+      }
     }
   }
 
@@ -368,19 +390,20 @@
 // Side floating image for NewPassword
 .auth-floating-preview {
   position: absolute;
-  left: -200px;
-  bottom: 20px;
-  width: 220px;
-  height: 280px;
-  border-radius: 16px;
-  border: 6px solid #ffffff;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+  left: -168px;
+  bottom: 28px;
+  width: 200px;
+  height: 252px;
+  border-radius: 14px;
+  border: 5px solid #ffffff;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transform: rotate(-3deg);
+  transform: rotate(-4deg);
   z-index: 5;
   display: none;
   background-color: #ffffff;
   animation: fadeInUp 0.8s ease-out;
+  pointer-events: none;
 
   @include lg {
     display: block;
@@ -646,6 +669,7 @@
 
 // Custom Submit buttons
 .auth-btn-navy {
+  background: #131b2e !important;
   background-color: #131b2e !important;
   color: #ffffff !important;
   width: 100%;
@@ -662,9 +686,15 @@
   gap: 8px !important;
 
   &:hover {
+    background: #1e293b !important;
     background-color: #1e293b !important;
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(#131b2e, 0.15) !important;
+  }
+
+  .p-button-label {
+    color: #ffffff !important;
+    font-weight: 600 !important;
   }
 
   .p-button-icon {
@@ -681,6 +711,7 @@
 }
 
 .auth-btn-teal {
+  background: #006591 !important;
   background-color: #006591 !important;
   color: #ffffff !important;
   width: 100%;
@@ -691,15 +722,52 @@
   border: none !important;
   margin-top: 8px;
   transition: all 0.2s ease !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+
+  .p-button-label {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    line-height: 1;
+    flex: 0 1 auto;
+  }
+
+  .p-button-icon {
+    display: inline-flex !important;
+    align-items: center;
+    font-size: 15px !important;
+    color: #ffffff !important;
+    margin: 0 !important;
+  }
+
+  .p-button-icon-right {
+    order: 2;
+    margin-left: 4px !important;
+  }
+
+  .p-button-label {
+    order: 1;
+  }
+
+  i {
+    display: inline-flex !important;
+    font-size: 15px !important;
+    color: #ffffff !important;
+  }
 
   &:hover {
-    background-color: darken(#006591, 5%) !important;
+    background: #005a82 !important;
+    background-color: #005a82 !important;
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(#006591, 0.15) !important;
+  }
+
+  &:enabled:focus,
+  &:enabled:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(#006591, 0.2) !important;
   }
 }
 
@@ -772,7 +840,7 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background-color: rgba(#39b8fd, 0.1);
+  background-color: rgba(#39b8fd, 0.12);
   color: #006591;
   display: flex;
   align-items: center;
@@ -783,6 +851,58 @@
   i {
     font-size: 24px;
     font-weight: bold;
+  }
+
+  &--recovery {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 24px;
+    background-color: rgba(#39b8fd, 0.14);
+  }
+}
+
+// Centered recovery flow header (Forgot Password, OTP, etc.)
+.auth-recovery-header {
+  text-align: center;
+  margin-bottom: 28px;
+
+  .auth-card__title {
+    text-align: center;
+    font-size: 28px;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    letter-spacing: -0.4px;
+  }
+
+  .auth-card__subtitle {
+    text-align: center;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: #64748b;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
+// Back navigation link below recovery forms
+.auth-back-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  color: #64748b;
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: 4px;
+  transition: color 0.2s ease;
+
+  i {
+    font-size: 12px;
+  }
+
+  &:hover {
+    color: #131b2e;
   }
 }
 
@@ -945,11 +1065,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 16px;
-  margin-top: 24px;
-  padding-top: 16px;
+  margin-top: 8px;
+  padding-top: 20px;
   border-top: 1px solid rgba(#e2e8f0, 0.6);
-  font-size: 12.5px;
+  font-size: 12px;
   color: #94a3b8;
   font-weight: 500;
 
@@ -964,23 +1085,27 @@
   }
 }
 
-// Carousel Dots under cards
+// Step indicators below recovery cards (Forgot Password → OTP)
 .auth-carousel-dots {
   display: flex;
   justify-content: center;
-  gap: 8px;
-  margin-top: 24px;
+  align-items: center;
+  gap: 6px;
+  margin-top: 0;
+  flex-shrink: 0;
 
   .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: #cbd5e1;
+    width: 6px;
+    height: 6px;
+    border-radius: 2px;
+    background-color: #e2e8f0;
+    transition: all 0.2s ease;
 
     &--active {
-      background-color: #64748b;
-      width: 16px;
-      border-radius: 4px;
+      background-color: #94a3b8;
+      width: 6px;
+      height: 6px;
+      border-radius: 2px;
     }
   }
 }
