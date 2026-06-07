@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Navbar.scss';
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('Home');
@@ -64,7 +66,10 @@ const Navbar = () => {
           <a className="navbar__link" href="#">FAQs</a>
         </div>
         
-        <button className="navbar__btn navbar__btn--desktop">Book Appointment</button>
+        <div style={{ display: 'flex', gap: '12px' }}>
+          <button className="navbar__btn navbar__btn--outline navbar__btn--desktop" onClick={() => navigate('/login')}>Sign In</button>
+          <button className="navbar__btn navbar__btn--desktop">Book Appointment</button>
+        </div>
 
         {/* Hamburger Menu Toggle (Mobile Only) */}
         <button className="navbar__hamburger" onClick={toggleMenu} aria-label="Open menu">
@@ -102,7 +107,11 @@ const Navbar = () => {
 
         {/* Call to Action & Footer Info */}
         <footer className="navbar__mobile-footer">
-          <div className="navbar__mobile-cta-wrapper">
+          <div className="navbar__mobile-cta-wrapper" style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%' }}>
+            <button className="navbar__mobile-cta-btn" style={{ backgroundColor: 'transparent', border: '2px solid var(--secondary)', color: 'var(--secondary)' }} onClick={() => { setIsMenuOpen(false); navigate('/login'); }}>
+              <span className="material-symbols-outlined">login</span>
+              Sign In
+            </button>
             <button className="navbar__mobile-cta-btn" onClick={() => setIsMenuOpen(false)}>
               <span className="material-symbols-outlined">calendar_month</span>
               Book Appointment
