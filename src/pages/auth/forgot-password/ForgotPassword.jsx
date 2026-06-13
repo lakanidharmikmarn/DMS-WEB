@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useNavigate, Link } from 'react-router-dom';
 import { InputText } from 'primereact/inputtext';
@@ -10,54 +10,27 @@ import './ForgotPassword.scss';
 const RecoveryIcon = () => (
   <svg
     className="forgot-password__icon-svg"
-    width="28"
-    height="28"
-    viewBox="0 0 28 28"
-    fill="none"
+    viewBox="-112.64 -112.64 737.28 737.28"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
+    style={{ transform: 'scaleY(-1)' }}
   >
-    <path
-      d="M19.25 9.25C17.43 6.82 14.48 5.25 11.25 5.25C7.08 5.25 3.75 8.58 3.75 12.75"
-      stroke="currentColor"
-      strokeWidth="1.75"
-      strokeLinecap="round"
-    />
-    <path
-      d="M8.75 18.75C10.57 21.18 13.52 22.75 16.75 22.75C20.92 22.75 24.25 19.42 24.25 15.25"
-      stroke="currentColor"
-      strokeWidth="1.75"
-      strokeLinecap="round"
-    />
-    <path
-      d="M20.75 5.75V9.25H17.25"
-      stroke="currentColor"
-      strokeWidth="1.75"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M7.25 22.25V18.75H10.75"
-      stroke="currentColor"
-      strokeWidth="1.75"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
+    {/* Circular background */}
     <rect
-      x="10.75"
-      y="12.5"
-      width="6.5"
-      height="5"
-      rx="1"
-      stroke="currentColor"
-      strokeWidth="1.75"
+      x="-112.64"
+      y="-112.64"
+      width="737.28"
+      height="737.28"
+      rx="368.64"
+      fill="#dbeafe"
+      stroke="none"
     />
-    <path
-      d="M12.25 12.5V11.25C12.25 10.15 13.15 9.25 14.25 9.25C15.35 9.25 16.25 10.15 16.25 11.25V12.5"
-      stroke="currentColor"
-      strokeWidth="1.75"
-      strokeLinecap="round"
-    />
+    {/* Icon path */}
+    <g fill="none" fillRule="evenodd">
+      <g fill="#006591" transform="translate(42.666667, 42.666667)">
+        <path d="M405.333333,3.55271368e-14 L405.333333,426.666667 L170.666667,426.666667 L170.666667,341.333333 L213.333333,341.333333 L213.333333,384 L362.666667,384 L362.666667,42.6666667 L213.333333,42.6666667 L213.333333,85.3333333 L170.666667,85.3333333 L170.666667,3.55271368e-14 L405.333333,3.55271368e-14 Z M74.6666667,138.666667 C108.491057,138.666667 137.06239,161.157677 146.241432,192.000465 L320,192 L320,234.666667 L298.666667,234.666667 L298.666667,277.333333 L234.666667,277.333333 L234.666667,234.666667 L146.241432,234.666202 C137.06239,265.508989 108.491057,288 74.6666667,288 C33.4294053,288 7.10542736e-15,254.570595 7.10542736e-15,213.333333 C7.10542736e-15,172.096072 33.4294053,138.666667 74.6666667,138.666667 Z M74.6666667,181.333333 C56.9935547,181.333333 42.6666667,195.660221 42.6666667,213.333333 C42.6666667,231.006445 56.9935547,245.333333 74.6666667,245.333333 C92.3397787,245.333333 106.666667,231.006445 106.666667,213.333333 C106.666667,195.660221 92.3397787,181.333333 74.6666667,181.333333 Z" />
+      </g>
+    </g>
   </svg>
 );
 
@@ -104,7 +77,7 @@ const ForgotPassword = () => {
       <Toast ref={toast} position="top-right" />
 
       <div className="forgot-password">
-        <div className="auth-header-icon auth-header-icon--recovery">
+        <div className="forgot-password__icon-wrapper">
           <RecoveryIcon />
         </div>
 

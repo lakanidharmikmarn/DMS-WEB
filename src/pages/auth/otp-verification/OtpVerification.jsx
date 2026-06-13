@@ -1,9 +1,36 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 import AuthLayout from '../AuthLayout';
 import './OtpVerification.scss';
+
+const VerifyEmailIcon = () => (
+  <svg
+    className="otp-verification__icon-svg"
+    width="28"
+    height="28"
+    viewBox="0 0 28 28"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+  >
+    <path
+      d="M3.5 8C3.5 6.61929 4.61929 5.5 6 5.5H22C23.3807 5.5 24.5 6.61929 24.5 8V15M3.5 8L12.5643 15.2514C13.4005 15.9204 14.5995 15.9204 15.4357 15.2514L24.5 8M3.5 8V20C3.5 21.3807 4.61929 22.5 6 22.5H14"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M17.5 20.5L20 23L25.5 17.5"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
 
 const OtpVerification = () => {
   const toast = useRef(null);
@@ -144,8 +171,8 @@ const OtpVerification = () => {
       <Toast ref={toast} position="top-right" />
 
       {/* Envelope / checkmark header icon */}
-      <div className="auth-header-icon" style={{ backgroundColor: 'rgba(#39b8fd, 0.1)', color: '#006591' }}>
-        <i className="pi pi-envelope-open" style={{ transform: 'scale(1.1)' }}></i>
+      <div className="auth-header-icon auth-header-icon--recovery">
+        <VerifyEmailIcon />
       </div>
 
       <header className="auth-card__header" style={{ textAlign: 'center' }}>

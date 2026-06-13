@@ -1,3 +1,7 @@
 @import '../Auth.scss';
 
-// Add any otp-verification-specific overrides here if needed
+.otp-verification {
+  &__icon-svg {
+    display: block;
+  }
+}

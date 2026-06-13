@@ -257,6 +257,26 @@
   padding: 16px 0;
 }
 
+.auth-centered-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: $font-display;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #131b2e;
+  margin-bottom: 24px;
+  animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
+  svg {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+}
+
 .auth-card {
   width: 100%;
   max-width: 520px;
@@ -402,7 +422,7 @@
   z-index: 5;
   display: none;
   background-color: #ffffff;
-  animation: fadeInUp 0.8s ease-out;
+  animation: previewFadeInUp 0.8s ease-out forwards;
   pointer-events: none;
 
   @include lg {
@@ -847,10 +867,20 @@
   justify-content: center;
   margin: 0 auto 20px;
   animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  font-size: 0;
+  line-height: 0;
 
   i {
     font-size: 24px;
     font-weight: bold;
+  }
+
+  svg {
+    width: 32px;
+    height: 32px;
+    display: block;
+    flex-shrink: 0;
+    overflow: visible;
   }
 
   &--recovery {
@@ -1119,6 +1149,17 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes previewFadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) rotate(-4deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(-4deg);
   }
 }
 

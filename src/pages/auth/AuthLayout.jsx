@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import './Auth.scss';
 
@@ -94,6 +94,14 @@ const AuthLayout = ({
         {/* Right Side Form Panel */}
         <div className={`auth-form-panel ${!isSplit ? 'auth-form-panel--centered' : ''}`}>
           <div className="auth-form-wrapper">
+            {!isSplit && (
+              <div className="auth-centered-logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ marginRight: '8px' }}>
+                  <path d="M12 2C10.5 2 9.5 3 9 4.5C8.5 3 7.5 2 6 2C3 2 1 4.5 1 8C1 13.5 6.5 17 12 22C17.5 17 23 13.5 23 8C23 4.5 21 2 18 2C16.5 2 15.5 3 15 4.5C14.5 3 13.5 2 12 2Z" fill="#39b8fd"/>
+                </svg>
+                <span>DentaCare</span>
+              </div>
+            )}
             <div className={`auth-card ${!isSplit ? 'auth-card--shadowed' : ''} ${floatingImage ? 'auth-card--with-preview' : ''}`}>
               {/* Floating side image for NewPassword reset view */}
               {floatingImage && (
